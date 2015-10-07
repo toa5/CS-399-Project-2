@@ -4,8 +4,16 @@
     <string name="app_name">Anagram</string>
     <string name="play">Play</string>
     <string name="credits">Credits</string>
+    <string name="creditsTitle">Created by</string>
+    <string name="author1">Temitope Alaga</string>
+    <string name="author2">Garrett Steffan</string>
+    <string name="author3">Yuri Santos</string>
     <string name="tutorial">How to Play</string>
     <string name="action_settings">Settings</string>
-    
+    <string name="authors">Created by Temitope Alaga, Garrett Steffan, Yuri Santos</string>
+    <string name="back">Back</string>
+    <string name="tutorialText">
+        Use the letters of word displayed on the screen to make new words  
+    </string>
 
 </resources>

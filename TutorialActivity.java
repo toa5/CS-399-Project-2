@@ -1,19 +1,17 @@
 package com.example.anagram;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
-
-public class MenuActivity extends Activity 
+public class TutorialActivity extends Activity 
 {
-    @Override
+	@Override
     protected void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_tutorial);
     }
 
     @Override
@@ -24,9 +22,6 @@ public class MenuActivity extends Activity
         return true;
     }
     
-    public void gotoCredits(View view)
-    {	startActivity(new Intent(this, CreditsActivity.class));}
-    
-    public void gotoTutorial(View view)
-    {	startActivity(new Intent(this, TutorialActivity.class));}
+    public void gotoMenu(View view)
+    {	finish();}
 }
