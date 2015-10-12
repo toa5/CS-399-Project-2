@@ -15,5 +15,7 @@
     <string name="tutorialText">
         Use the letters of word displayed on the screen to make new words  
     </string>
+    <string name="tempMessage">Anagram word will have movable letters that
+        can be dragged to make new words.</string>
 
 </resources>

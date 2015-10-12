@@ -1,27 +1,8 @@
 package com.example.anagram;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.View;
 
-public class CreditsActivity extends Activity 
+public class CreditsActivity extends AnagramActivity 
 {
-	@Override
-    protected void onCreate(Bundle savedInstanceState) 
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_credits);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) 
-    {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-    
-    public void gotoMenu(View view)
-    {	finish();}
+	public CreditsActivity() 
+	{	super(R.layout.activity_credits);}
 }
