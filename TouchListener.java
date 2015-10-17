@@ -16,8 +16,8 @@ final class TouchListener implements OnTouchListener
 		switch(event.getActionMasked())
 		{
 			case MotionEvent.ACTION_DOWN:
-		        DragShadowBuilder shadowBuilder = new DragShadowBuilder();
-		        view.startDrag(ClipData.newPlainText("", ""), shadowBuilder, view, 0);
+		        view.startDrag(ClipData.newPlainText("", ""), 
+		        		new DragShadowBuilder(), view, 0);
 		        return true;
 			default: 
 				return false;

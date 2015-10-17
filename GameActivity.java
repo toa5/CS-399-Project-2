@@ -3,6 +3,8 @@ package com.example.anagram;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.annotation.SuppressLint;
 import android.content.ClipDescription;
@@ -36,6 +38,7 @@ public class GameActivity extends AnagramActivity
 		{R.string.p14, R.string.s14},
 	};
 	private String word, solution;
+	boolean done = false;
 	
 	public GameActivity() 
 	{	super(R.layout.activity_game);}
@@ -43,7 +46,8 @@ public class GameActivity extends AnagramActivity
 	@Override
 	public void onCreate()
 	{
-		setRandomWord();
+		if(word == null || solution == null)
+			setRandomWord();
 		
 		LinearLayout layout = (LinearLayout) this.findViewById(R.id.wordLayout);
 		layout.setOnDragListener(new DragListener());
@@ -58,6 +62,9 @@ public class GameActivity extends AnagramActivity
 			}
 		}
 		layout.setWeightSum(buttons.size());
+		
+		Timer timer = new Timer(true);
+		timer.scheduleAtFixedRate(new Task(), 1000, 1000);
 	}
 	
 	void setRandomWord()
@@ -90,6 +97,7 @@ public class GameActivity extends AnagramActivity
 		
 		TextView text = (TextView) this.findViewById(R.id.gameText);
 		text.setText(getString(R.string.successMessage));
+		done = true;
 	}
 	
 	@SuppressLint("NewApi")
@@ -106,7 +114,8 @@ public class GameActivity extends AnagramActivity
 					{return false;}
 				case DragEvent.ACTION_DRAG_LOCATION:
 				case DragEvent.ACTION_DROP:
-					((AnagramButton) event.getLocalState()).setX(event.getX());
+					AnagramButton button = ((AnagramButton) event.getLocalState());
+					button.setX(event.getX()-button.getWidth()*0.5f);
 				case DragEvent.ACTION_DRAG_ENTERED:
 				case DragEvent.ACTION_DRAG_EXITED:
 					return true;
@@ -114,8 +123,8 @@ public class GameActivity extends AnagramActivity
 					Collections.sort(buttons);
 					LinearLayout layout = (LinearLayout) view;
 					layout.removeAllViews();
-					for(AnagramButton button : buttons)
-						layout.addView(new AnagramButton(button));
+					for(AnagramButton anagramButton : buttons)
+						layout.addView(new AnagramButton(anagramButton));
 					buttons.clear();
 					for(int i = 0, n = layout.getChildCount(); i < n; ++i)
 						buttons.add((AnagramButton) layout.getChildAt(i));
@@ -124,6 +133,36 @@ public class GameActivity extends AnagramActivity
 				default:
 					return false;
 			}
+		}
+	}
+
+	class Task extends TimerTask
+	{
+		long seconds;
+		final TextView text;
+		final Runnable runnable;
+		
+		public Task()
+		{
+			super();
+			text = (TextView)findViewById(R.id.timerText);
+			text.setText("00:00");
+			runnable = new Runnable()
+			{
+				@Override
+				public void run()
+				{
+					text.setText(String.format("%02d:%02d", ++seconds / 60,
+														seconds % 60));
+				}
+			};
+		}
+		
+		@Override
+		public void run() 
+		{	
+			if(!done)
+				GameActivity.this.runOnUiThread(runnable);
 		}
 	}
 }
