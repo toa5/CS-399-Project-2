@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Anagram</string>
+    <string name="app_name">Anagram Game</string>
     <string name="play">Play</string>
     <string name="credits">Credits</string>
     <string name="creditsTitle">Created by</string>
@@ -13,9 +13,9 @@
     <string name="authors">Created by Temitope Alaga, Garrett Steffan, Yuri Santos</string>
     <string name="back">Back</string>
     <string name="tutorialText">
-        Use the letters of word displayed on the screen to make new words  
+        Use the letters of word displayed on the screen to make new word(s) 
     </string>
-    <string name="anagramMessage">Drag the letters below to create a new word</string>
+    <string name="anagramMessage">Drag the letters below to create new word(s)</string>
     <string name="successMessage">Success! You win!</string>
         
     <string name="p1">saucy tea dot</string>
